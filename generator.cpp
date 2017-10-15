@@ -3,6 +3,8 @@
 #include<vector>
 
 constexpr int batch_size = 32;
+const char dropout_ratio[4] = "0.2";
+
 int indent;
 char buf[1<<8];
 
@@ -537,6 +539,107 @@ std::string inceptionC(std::string prv, int idx)
     return cur;
 }
 
+void create_loss(std::string prv)
+{
+    std::string cur = "average_pool";
+    //pooling
+    print("layer {");
+    sprintf(buf,"name: \"%s\"",cur.c_str());
+    print(buf);
+    print("type: \"Pooling\"");
+    in_out(prv, cur);
+
+    print("pooling_param {");
+    print("pool: AVE");
+    print("global_pooling: true");
+    print("}");
+
+    print("}");
+
+    //dropout
+    prv = cur;
+    cur = "dropout";
+    print("layer {");
+    sprintf(buf,"name: \"%s\"",cur.c_str());
+    print(buf);
+    print("type: \"Dropout\"");
+    in_out(prv, cur);
+
+    print("dropout_param {");
+    sprintf(buf,"dropout_ratio: %s",dropout_ratio);
+    print(buf);
+    print("}");
+
+    print("}");
+
+    //classifier
+    prv = cur;
+    cur = "classifier";
+    print("layer {");
+    sprintf(buf,"name: \"%s\"",cur.c_str());
+    print(buf);
+    print("type: \"InnerProduct\"");
+    in_out(prv, cur);
+
+    print("param {");
+    print("lr_mult: 1");
+    print("decay_mult: 1");
+    print("}");
+
+    print("param {");
+    print("lr_mult: 2");
+    print("decay_mult: 0");
+    print("}");
+
+    print("inner_product_param {");
+    print("num_output: 1000");
+    print("weight_filler {");
+    print("type: \"xavier\"");
+    print("}");
+    print("bias_filler {");
+    print("type: \"constant\"");
+    print("value: 0");
+    print("}");
+
+    print("}");
+
+    //loss
+    prv = cur;
+    cur = "loss/loss";
+    print("layer {");
+    sprintf(buf,"name: \"%s\"",cur.c_str());
+    print(buf);
+    print("type: \"SoftmaxWithLoss\"");
+    in_out({prv, "label"}, cur);
+    print("loss_weight: 1");
+    print("}");
+
+    cur = "loss/top-1";
+    print("layer {");
+    sprintf(buf,"name: \"%s\"",cur.c_str());
+    print(buf);
+    print("type: \"Accuracy\"");
+    in_out({prv, "label"}, cur);
+    print("include {");
+    print("phase: TEST");
+    print("}");
+    print("}");
+
+    cur = "loss/top-5";
+    print("layer {");
+    sprintf(buf,"name: \"%s\"",cur.c_str());
+    print(buf);
+    print("type: \"Accuracy\"");
+    in_out({prv, "label"}, cur);
+    print("include {");
+    print("phase: TEST");
+    print("}");
+    print("accuracy_param {");
+    print("top_k: 5");
+    print("}");
+    print("}");
+}
+
 int main()
 {
     freopen("train_val.prototxt","w",stdout);
@@ -550,4 +653,5 @@ int main()
     res = reductionB(res);
     for(int i=1; i<=3; i++)
         res = inceptionC(res, i);
+    create_loss(res);
 }
