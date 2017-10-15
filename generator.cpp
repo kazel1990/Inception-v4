@@ -40,7 +40,8 @@ void in_out(std::string bot, std::string top)
 
 //TODO: handle hyperparams outside
 void convolution(std::string name, std::string bot, std::string top,
-        int output, int pad, int kernel, int stride)
+        int output, int pad_h, int pad_w, int kernel_h, int kernel_w,
+        int stride)
 {
     print("layer {");
     sprintf(buf,"name: \"%s\"",name.c_str());
@@ -58,10 +59,30 @@ void convolution(std::string name, std::string bot, std::string top,
     print("convolution_param {");
     sprintf(buf,"num_output: %d",output);
     print(buf);
-    sprintf(buf,"pad: %d",pad);
-    print(buf);
-    sprintf(buf,"kernel_size: %d",kernel);
-    print(buf);
+    if(pad_h == pad_w)
+    {
+        sprintf(buf,"pad: %d",pad_h);
+        print(buf);
+    }
+    else
+    {
+        sprintf(buf,"pad_h: %d",pad_h);
+        print(buf);
+        sprintf(buf,"pad_w: %d",pad_w);
+        print(buf);
+    }
+    if(kernel_h == kernel_w)
+    {
+        sprintf(buf,"kernel_size: %d",kernel_h);
+        print(buf);
+    }
+    else
+    {
+        sprintf(buf,"kernel_h: %d",kernel_h);
+        print(buf);
+        sprintf(buf,"kernel_w: %d",kernel_w);
+        print(buf);
+    }
     sprintf(buf,"stride: %d",stride);
     print(buf);
 
@@ -79,6 +100,13 @@ void convolution(std::string name, std::string bot, std::string top,
 
     print("}");
 }
+
+void convolution(std::string name, std::string bot, std::string top,
+        int output, int pad, int kernel, int stride)
+{
+    convolution(name, bot, top, output, pad, pad, kernel, kernel, stride);
+}
+
 
 void batch_norm(std::string blob)
 {
@@ -116,14 +144,15 @@ void relu(std::string blob)
 }
 
 void pool(std::string name, std::string bot, std::string top,
-        int kernel, int stride)
+        std::string type, int kernel, int stride)
 {
     sprintf(buf,"name: \"%s\"",name.c_str());
     print(buf);
     print("type: \"Pooling\"");
     in_out(bot, top);
     print("pooling_param {");
-    print("pool: MAX");
+    sprintf(buf,"pool: %s",type.c_str());
+    print(buf);
     sprintf(buf,"kernel_size: %d",kernel);
     print(buf);
     sprintf(buf,"stride: %d",stride);
@@ -183,6 +212,7 @@ void create_data()
 void create_stem()
 {
     std::string prv = "data", cur = "stem_conv1_3x3";
+    std::string cur1, cur2, prv1, prv2;
     auto norm = [](std::string str){
         batch_norm(str);
         scale(str);
@@ -202,14 +232,46 @@ void create_stem()
     norm(cur);
 
     prv = cur;
-    std::string cur1 = "stem_inception1_pool";
-    pool(cur1, prv, cur1, 3, 2);
+    cur1 = "stem_inception1_pool";
+    pool(cur1, prv, cur1, "MAX", 3, 2);
 
-    std::string cur2 = "stem_inception1_conv_3x3";
+    cur2 = "stem_inception1_conv_3x3";
     convolution(cur2, prv, cur2, 96, 0, 3, 2);
     norm(cur2);
 
-    cur = "stem_inseption1_concat";
+    cur = "stem_inception1_concat";
+    concat(cur, {cur1, cur2}, cur);
+
+    prv = cur;
+    cur1 = "stem_inception2_conv1_1_1x1";
+    convolution(cur1, prv, cur1, 64, 0, 1, 1);
+    norm(cur1);
+
+    prv1 = cur1;
+    cur1 = "stem_inception2_conv1_2_3x3";
+    convolution(cur1, prv1, cur1, 96, 0, 3, 1);
+    norm(cur1);
+
+    cur2 = "stem_inception2_conv2_1_1x1";
+    convolution(cur2, prv, cur2, 64, 0, 1, 1);
+    norm(cur2);
+
+    prv2 = cur2;
+    cur2 = "stem_inception2_conv2_2_7x1";
+    convolution(cur2, prv2, cur2, 64, 3, 0, 7, 1, 1);
+    norm(cur2);
+
+    prv2 = cur2;
+    cur2 = "stem_inception2_conv2_3_1x7";
+    convolution(cur2, prv2, cur2, 64, 0, 3, 1, 7, 1);
+    norm(cur2);
+
+    prv2 = cur2;
+    cur2 = "stem_inception2_conv2_4_3x3";
+    convolution(cur2, prv2, cur2, 96, 0, 3, 1);
+    norm(cur2);
+
+    cur = "stem_inception2_concat";
     concat(cur, {cur1, cur2}, cur);
 }
 
