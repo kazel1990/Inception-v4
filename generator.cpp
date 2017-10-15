@@ -477,6 +477,66 @@ std::string reductionB(std::string prv)
     return cur;
 }
 
+std::string inceptionC(std::string prv, int idx)
+{
+    sprintf(buf,"inception_c%d_",idx);
+    std::string header(buf);
+    std::string cur1, cur2, cur3, cur4, cur5, cur6;
+    std::string prv1, prv3, prv5;
+
+    cur1 = header + "pool";
+    pool(cur1, prv, cur1, "AVE", 3, 1, 1);
+
+    prv1 = cur1;
+    cur1 = header + "conv1_2_1x1";
+    convolution(cur1, prv1, cur1, 256, 0, 1, 1);
+    norm(cur1);
+
+    cur2 = header + "conv2_1_1x1";
+    convolution(cur2, prv, cur2, 256, 0, 1, 1);
+    norm(cur2);
+
+    cur3 = header + "conv3_1_1x1";
+    convolution(cur3, prv, cur3, 384, 0, 1, 1);
+    norm(cur3);
+
+    prv3 = cur3;
+    cur3 = header + "conv3_2_1x3";
+    convolution(cur3, prv3, cur3, 256, 0, 1, 1, 3, 1);
+    norm(cur3);
+
+    cur4 = header + "conv4_2_3x1";
+    convolution(cur4, prv3, cur4, 256, 1, 0, 3, 1, 1);
+    norm(cur4);
+
+    cur5 = header + "conv5_1_1x1";
+    convolution(cur5, prv, cur5, 384, 0, 1, 1);
+    norm(cur5);
+
+    prv5 = cur5;
+    cur5 = header + "conv5_2_1x3";
+    convolution(cur5, prv5, cur5, 448, 0, 1, 1, 3, 1);
+    norm(cur5);
+
+    prv5 = cur5;
+    cur5 = header + "conv5_3_3x1";
+    convolution(cur5, prv5, cur5, 512, 1, 0, 3, 1, 1);
+    norm(cur5);
+
+    prv5 = cur5;
+    cur5 = header + "conv5_4_3x1";
+    convolution(cur5, prv5, cur5, 256, 1, 0, 3, 1, 1);
+    norm(cur5);
+
+    cur6 = header + "conv6_4_1x3";
+    convolution(cur6, prv5, cur6, 256, 0, 1, 1, 3, 1);
+    norm(cur6);
+
+    std::string cur = header + "concat";
+    concat(cur, {cur1, cur2, cur3, cur4, cur5, cur6}, cur);
+    return cur;
+}
+
 int main()
 {
     freopen("train_val.prototxt","w",stdout);
@@ -488,4 +548,6 @@ int main()
     for(int i=1; i<=7; i++)
         res = inceptionB(res, i);
     res = reductionB(res);
+    for(int i=1; i<=3; i++)
+        res = inceptionC(res, i);
 }
