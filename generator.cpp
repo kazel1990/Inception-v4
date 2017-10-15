@@ -375,12 +375,75 @@ std::string reductionA(std::string prv)
     return cur;
 }
 
+std::string inceptionB(std::string prv, int idx)
+{
+    sprintf(buf,"inception_b%d_",idx);
+    std::string header(buf);
+    std::string cur1, cur2, cur3, cur4, prv1, prv3, prv4;
+
+    cur1 = header + "pool";
+    pool(cur1, prv, cur1, "AVE", 3, 1, 1);
+
+    prv1 = cur1;
+    cur1 = header + "conv1_1_1x1";
+    convolution(cur1, prv1, cur1, 128, 0, 1, 1);
+    norm(cur1);
+
+    cur2 = header + "conv2_1_1x1";
+    convolution(cur2, prv, cur2, 384, 0, 1, 1);
+    norm(cur2);
+
+    cur3 = header + "conv3_1_1x1";
+    convolution(cur3, prv, cur3, 192, 0, 1, 1);
+    norm(cur3);
+
+    prv3 = cur3;
+    cur3 = header + "conv3_2_1x7";
+    convolution(cur3, prv3, cur3, 224, 0, 3, 1, 7, 1);
+    norm(cur3);
+
+    prv3 = cur3;
+    cur3 = header + "conv3_3_1x7";
+    convolution(cur3, prv3, cur3, 256, 0, 3, 1, 7, 1);
+    norm(cur3);
+
+    cur4 = header + "conv4_1_1x1";
+    convolution(cur4, prv, cur4, 192, 0, 1, 1);
+    norm(cur4);
+
+    prv4 = cur4;
+    cur4 = header + "conv4_2_1x7";
+    convolution(cur4, prv4, cur4, 192, 0, 3, 1, 7, 1);
+    norm(cur4);
+
+    prv4 = cur4;
+    cur4 = header + "conv4_3_7x1";
+    convolution(cur4, prv4, cur4, 224, 3, 0, 7, 1, 1);
+    norm(cur4);
+
+    prv4 = cur4;
+    cur4 = header + "conv4_4_1x7";
+    convolution(cur4, prv4, cur4, 224, 0, 3, 1, 7, 1);
+    norm(cur4);
+
+    prv4 = cur4;
+    cur4 = header + "conv4_5_7x1";
+    convolution(cur4, prv4, cur4, 256, 3, 0, 7, 1, 1);
+    norm(cur4);
+
+    std::string cur = header + "concat";
+    concat(cur, {cur1, cur2, cur3, cur4}, cur);
+    return cur;
+}
+
 int main()
 {
     freopen("train_val.prototxt","w",stdout);
     create_data();
     std::string res = create_stem("data");
-    for(int i=1;i<=4; i++)
+    for(int i=1; i<=4; i++)
         res = inceptionA(res, i);
     res = reductionA(res);
+    for(int i=1; i<=7; i++)
+        res = inceptionB(res, i);
 }
