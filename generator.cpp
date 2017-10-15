@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string>
+#include<vector>
 
 constexpr int batch_size = 32;
 int indent;
@@ -18,6 +19,25 @@ void print(const char * str)
     puts(str);
 }
 
+void in_out(std::vector<std::string> bot, std::string top)
+{
+    for(std::string str : bot)
+    {
+        sprintf(buf,"bottom: \"%s\"",str.c_str());
+        print(buf);
+    }
+    sprintf(buf,"top: \"%s\"",top.c_str());
+    print(buf);
+}
+
+void in_out(std::string bot, std::string top)
+{
+    sprintf(buf,"bottom: \"%s\"",bot.c_str());
+    print(buf);
+    sprintf(buf,"top: \"%s\"",top.c_str());
+    print(buf);
+}
+
 //TODO: handle hyperparams outside
 void convolution(std::string name, std::string bot, std::string top,
         int output, int pad, int kernel, int stride)
@@ -25,11 +45,7 @@ void convolution(std::string name, std::string bot, std::string top,
     print("layer {");
     sprintf(buf,"name: \"%s\"",name.c_str());
     print("type: \"Convolution\"");
-    sprintf(buf,"bottom: \"%s\"",bot.c_str());
-    print(buf);
-    sprintf(buf,"top: \"%s\"",top.c_str());
-    print(buf);
-
+    in_out(bot,top);
     print("param {");
     print("lr_mult: 1");
     print("decay_mult: 1");
@@ -59,6 +75,20 @@ void convolution(std::string name, std::string bot, std::string top,
     print("value: 0.2");
     print("}");
 
+    print("}");
+
+    print("}");
+}
+
+void batch_norm(std::string blob)
+{
+    print("layer {");
+    sprintf(buf,"name: \"%s_bn\"",blob.c_str());
+    print(buf);
+    print("type: \"BatchNorm\"");
+    in_out(blob,blob);
+    print("patch_norm_param {");
+    print("use_global_stats: false");
     print("}");
 
     print("}");
