@@ -436,6 +436,47 @@ std::string inceptionB(std::string prv, int idx)
     return cur;
 }
 
+std::string reductionB(std::string prv)
+{
+    std::string header = "reduction_b_";
+    std::string cur1, cur2, cur3, prv2, prv3;
+
+    cur1 = header + "pool";
+    pool(cur1, prv, cur1, "MAX", 3, 2);
+
+    cur2 = header + "conv2_1_1x1";
+    convolution(cur2, prv, cur2, 192, 0, 1, 1);
+    norm(cur2);
+
+    prv2 = cur2;
+    cur2 = header + "conv2_2_3x3";
+    convolution(cur2, prv2, cur2, 192, 0, 3, 2);
+    norm(cur2);
+
+    cur3 = header + "conv3_1_1x1";
+    convolution(cur3, prv, cur3, 256, 0, 1, 1);
+    norm(cur3);
+
+    prv3 = cur3;
+    cur3 = header + "conv3_2_1x7";
+    convolution(cur3, prv3, cur3, 256, 0, 3, 1, 7, 1);
+    norm(cur3);
+
+    prv3 = cur3;
+    cur3 = header + "conv3_3_7x1";
+    convolution(cur3, prv3, cur3, 320, 3, 0, 7, 1, 1);
+    norm(cur3);
+
+    prv3 = cur3;
+    cur3 = header + "conv3_4_3x3";
+    convolution(cur3, prv3, cur3, 320, 0, 3, 2);
+    norm(cur3);
+
+    std::string cur = header + "concat";
+    concat(cur, {cur1, cur2, cur3}, cur);
+    return cur;
+}
+
 int main()
 {
     freopen("train_val.prototxt","w",stdout);
@@ -446,4 +487,5 @@ int main()
     res = reductionA(res);
     for(int i=1; i<=7; i++)
         res = inceptionB(res, i);
+    res = reductionB(res);
 }
