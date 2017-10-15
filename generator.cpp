@@ -593,12 +593,16 @@ void create_loss(std::string prv)
 
     print("inner_product_param {");
     print("num_output: 1000");
+
     print("weight_filler {");
     print("type: \"xavier\"");
     print("}");
+
     print("bias_filler {");
     print("type: \"constant\"");
     print("value: 0");
+    print("}");
+
     print("}");
 
     print("}");
