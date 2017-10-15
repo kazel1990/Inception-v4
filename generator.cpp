@@ -102,7 +102,7 @@ void scale(std::string blob)
     in_out(blob,blob);
     print("scale_param {");
     print("bias_term: true");
-    printf("}");
+    print("}");
     print("}");
 }
 
