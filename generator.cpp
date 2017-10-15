@@ -133,6 +133,15 @@ void pool(std::string name, std::string bot, std::string top,
     print("}");
 }
 
+void concat(std::string name, std::vector<std::string> bot, std::string top)
+{
+    print("layer {");
+    sprintf(buf,"name: \"%s_scale\"",name.c_str());
+    print(buf);
+    print("type: \"Concat\"");
+    in_out(bot, top);
+}
+
 void create_data()
 {
     for(int i=0;i<=1;i++)
@@ -195,6 +204,13 @@ void create_stem()
     prv = cur;
     std::string cur1 = "stem_inception1_pool";
     pool(cur1, prv, cur1, 3, 2);
+
+    std::string cur2 = "stem_inception1_conv_3x3";
+    convolution(cur2, prv, cur2, 96, 0, 3, 2);
+    norm(cur2);
+
+    cur = "stem_inseption1_concat";
+    concat(cur, {cur1, cur2}, cur);
 }
 
 int main()
