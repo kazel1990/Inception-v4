@@ -7,4 +7,4 @@ generator : generator.cpp
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 clean : 
-	rm generator
+	rm generator train_val.prototxt
