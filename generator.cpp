@@ -87,8 +87,47 @@ void batch_norm(std::string blob)
     print(buf);
     print("type: \"BatchNorm\"");
     in_out(blob,blob);
-    print("patch_norm_param {");
+    print("batch_norm_param {");
     print("use_global_stats: false");
+    print("}");
+
+    print("}");
+}
+
+void scale(std::string blob)
+{
+    print("layer {");
+    sprintf(buf,"name: \"%s_scale\"",blob.c_str());
+    print("type: \"Scale\"");
+    in_out(blob,blob);
+    print("scale_param {");
+    print("bias_term: true");
+    printf("}");
+    print("}");
+}
+
+void relu(std::string blob)
+{
+    print("layer {");
+    sprintf(buf,"name: \"%s_scale\"",blob.c_str());
+    print("type: \"ReLU\"");
+    in_out(blob,blob);
+    print("}");
+}
+
+void pool(std::string name, std::string bot, std::string top,
+        int kernel, int stride)
+{
+    sprintf(buf,"name: \"%s\"",name.c_str());
+    print(buf);
+    print("type: \"Pooling\"");
+    in_out(bot, top);
+    print("pooling_param {");
+    print("pool: MAX");
+    sprintf(buf,"kernel_size: %d",kernel);
+    print(buf);
+    sprintf(buf,"stride: %d",stride);
+    print(buf);
     print("}");
 
     print("}");
@@ -134,7 +173,28 @@ void create_data()
 
 void create_stem()
 {
-    convolution("stem_conv1_3x3", "data", "stem_conv1_3x3",32,0,3,2);
+    std::string prv = "data", cur = "stem_conv1_3x3";
+    auto norm = [](std::string str){
+        batch_norm(str);
+        scale(str);
+        relu(str);
+    };
+    convolution(cur, prv, cur, 32, 0, 3, 2);
+    norm(cur);
+
+    prv = cur;
+    cur = "stem_conv2_3x3";
+    convolution(cur, prv, cur, 32, 0, 3, 1);
+    norm(cur);
+
+    prv = cur;
+    cur = "stem_conv3_3x3";
+    convolution(cur, prv, cur, 64, 1, 3, 1);
+    norm(cur);
+
+    prv = cur;
+    std::string cur1 = "stem_inception1_pool";
+    pool(cur1, prv, cur1, 3, 2);
 }
 
 int main()
