@@ -302,7 +302,7 @@ std::string inceptionA(std::string prv, int idx)
 {
     sprintf(buf,"inception_a%d",idx);
     std::string header(buf);
-    std::string cur1, cur2, cur3, cur4, prv1, prv2, prv3, prv4;
+    std::string cur1, cur2, cur3, cur4, prv1, prv3, prv4;
 
     cur1 = header + "_pool";
     pool(cur1, prv, cur1, "AVE", 3, 1, 1);
@@ -344,6 +344,37 @@ std::string inceptionA(std::string prv, int idx)
     return cur;
 }
 
+std::string reductionA(std::string prv)
+{
+    std::string header = "reduction_a_";
+    std::string cur1, cur2, cur3, prv3;
+
+    cur1 = header + "pool";
+    pool(cur1, prv, cur1, "MAX", 3, 2);
+
+    cur2 = header + "conv2_1_3x3";
+    convolution(cur2, prv, cur2, 384, 0, 3, 2);
+    norm(cur2);
+
+    cur3 = header + "conv3_1_1x1";
+    convolution(cur3, prv, cur3, 192, 0, 1, 1);
+    norm(cur3);
+    
+    prv3 = cur3;
+    cur3 = header + "conv3_2_3x3";
+    convolution(cur3, prv3, cur3, 224, 1, 3, 1);
+    norm(cur3);
+
+    prv3 = cur3;
+    cur3 = header + "conv3_3_3x3";
+    convolution(cur3, prv3, cur3, 256, 0, 3, 2);
+    norm(cur3);
+
+    std::string cur = header + "concat";
+    concat(cur, {cur1, cur2, cur3}, cur);
+    return cur;
+}
+
 int main()
 {
     freopen("train_val.prototxt","w",stdout);
@@ -351,4 +382,5 @@ int main()
     std::string res = create_stem("data");
     for(int i=1;i<=4; i++)
         res = inceptionA(res, i);
+    res = reductionA(res);
 }
