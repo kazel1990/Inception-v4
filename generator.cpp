@@ -144,8 +144,9 @@ void relu(std::string blob)
 }
 
 void pool(std::string name, std::string bot, std::string top,
-        std::string type, int kernel, int stride)
+        std::string type, int kernel, int stride, int pad=0)
 {
+    print("layer {");
     sprintf(buf,"name: \"%s\"",name.c_str());
     print(buf);
     print("type: \"Pooling\"");
@@ -157,6 +158,11 @@ void pool(std::string name, std::string bot, std::string top,
     print(buf);
     sprintf(buf,"stride: %d",stride);
     print(buf);
+    if(pad)
+    {
+        sprintf(buf,"pad: %d",pad);
+        print(buf);
+    }
     print("}");
 
     print("}");
@@ -169,6 +175,14 @@ void concat(std::string name, std::vector<std::string> bot, std::string top)
     print(buf);
     print("type: \"Concat\"");
     in_out(bot, top);
+    print("}");
+}
+
+void norm(std::string str)
+{
+    batch_norm(str);
+    scale(str);
+    relu(str);
 }
 
 void create_data()
@@ -209,15 +223,11 @@ void create_data()
     }
 }
 
-void create_stem()
+std::string create_stem(std::string prv)
 {
-    std::string prv = "data", cur = "stem_conv1_3x3";
+    std::string cur = "stem_conv1_3x3";
     std::string cur1, cur2, prv1, prv2;
-    auto norm = [](std::string str){
-        batch_norm(str);
-        scale(str);
-        relu(str);
-    };
+    
     convolution(cur, prv, cur, 32, 0, 3, 2);
     norm(cur);
 
@@ -273,11 +283,72 @@ void create_stem()
 
     cur = "stem_inception2_concat";
     concat(cur, {cur1, cur2}, cur);
+
+    prv = cur;
+
+    cur1 = "stem_inception3_conv_3x3";
+    convolution(cur1, prv, cur1, 192, 0, 3, 1);
+    norm(cur1);
+
+    cur2 = "stem_inception3_pool";
+    pool(cur2, prv, cur2, "MAX", 3, 2);
+
+    cur = "stem_inception3_concat";
+    concat(cur, {cur1, cur2}, cur);
+    return cur;
+}
+
+std::string inceptionA(std::string prv, int idx)
+{
+    sprintf(buf,"inception_a%d",idx);
+    std::string header(buf);
+    std::string cur1, cur2, cur3, cur4, prv1, prv2, prv3, prv4;
+
+    cur1 = header + "_pool";
+    pool(cur1, prv, cur1, "AVE", 3, 1, 1);
+
+    prv1 = cur1;
+    cur1 = header + "_conv1_1_1x1";
+    convolution(cur1, prv1, cur1, 96, 0, 1, 1);
+    norm(cur1);
+
+    cur2 = header + "_conv2_1_1x1";
+    convolution(cur2, prv, cur2, 96, 0, 1, 1);
+    norm(cur2);
+
+    cur3 = header + "_conv3_1_1x1";
+    convolution(cur3, prv, cur3, 64, 0, 1, 1);
+    norm(cur3);
+
+    prv3 = cur3;
+    cur3 = header + "_conv3_2_3x3";
+    convolution(cur3, prv3, cur3, 96, 1, 3, 1);
+    norm(cur3);
+
+    cur4 = header + "_conv4_1_1x1";
+    convolution(cur4, prv, cur4, 64, 0, 1, 1);
+    norm(cur4);
+
+    prv4 = cur4;
+    cur4 = header + "_conv4_2_3x3";
+    convolution(cur4, prv4, cur4, 96, 1, 3, 1);
+    norm(cur4);
+
+    prv4 = cur4;
+    cur4 = header + "_conv4_3_3x3";
+    convolution(cur4, prv4, cur4, 96, 1, 3, 1);
+    norm(cur4);
+
+    std::string cur = header + "_concat";
+    concat(cur, {cur1, cur2, cur3, cur4}, cur);
+    return cur;
 }
 
 int main()
 {
     freopen("train_val.prototxt","w",stdout);
     create_data();
-    create_stem();
+    std::string res = create_stem("data");
+    for(int i=1;i<=4; i++)
+        res = inceptionA(res, i);
 }
