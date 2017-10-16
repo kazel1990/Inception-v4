@@ -23,7 +23,7 @@ void print(const char * str)
 
 void in_out(std::vector<std::string> bot, std::string top)
 {
-    for(std::string str : bot)
+    for(std::string & str : bot)
     {
         sprintf(buf,"bottom: \"%s\"",str.c_str());
         print(buf);
@@ -47,6 +47,7 @@ void convolution(std::string name, std::string bot, std::string top,
 {
     print("layer {");
     sprintf(buf,"name: \"%s\"",name.c_str());
+    print(buf);
     print("type: \"Convolution\"");
     in_out(bot,top);
     print("param {");
@@ -139,7 +140,8 @@ void scale(std::string blob)
 void relu(std::string blob)
 {
     print("layer {");
-    sprintf(buf,"name: \"%s_scale\"",blob.c_str());
+    sprintf(buf,"name: \"%s_relu\"",blob.c_str());
+    print(buf);
     print("type: \"ReLU\"");
     in_out(blob,blob);
     print("}");
@@ -173,7 +175,7 @@ void pool(std::string name, std::string bot, std::string top,
 void concat(std::string name, std::vector<std::string> bot, std::string top)
 {
     print("layer {");
-    sprintf(buf,"name: \"%s_scale\"",name.c_str());
+    sprintf(buf,"name: \"%s\"",name.c_str());
     print(buf);
     print("type: \"Concat\"");
     in_out(bot, top);
