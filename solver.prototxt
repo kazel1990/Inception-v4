@@ -10,7 +10,6 @@ stepsize: 320000
 delta: 0.9
 gamma: 0.94
 max_iter: 10000000
-momentum: 0.9
 type: "RMSProp"
 rms_decay: 0.9
 snapshot: 40000
