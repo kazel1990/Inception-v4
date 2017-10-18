@@ -596,7 +596,7 @@ layer {
     num_output: 192
     pad: 0
     kernel_size: 3
-    stride: 1
+    stride: 2
     weight_filler {
       type: "xavier"
       std: 0.01

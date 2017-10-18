@@ -291,7 +291,7 @@ std::string create_stem(std::string prv)
     prv = cur;
 
     cur1 = "stem_inception3_conv_3x3";
-    convolution(cur1, prv, cur1, 192, 0, 3, 1);
+    convolution(cur1, prv, cur1, 192, 0, 3, 2);
     norm(cur1);
 
     cur2 = "stem_inception3_pool";
