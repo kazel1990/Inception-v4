@@ -129,6 +129,7 @@ void scale(std::string blob)
 {
     print("layer {");
     sprintf(buf,"name: \"%s_scale\"",blob.c_str());
+    print(buf);
     print("type: \"Scale\"");
     in_out(blob,blob);
     print("scale_param {");

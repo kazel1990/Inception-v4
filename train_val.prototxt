@@ -78,6 +78,7 @@ layer {
   }
 }
 layer {
+  name: "stem_conv1_3x3_scale"
   type: "Scale"
   bottom: "stem_conv1_3x3"
   top: "stem_conv1_3x3"
@@ -129,6 +130,7 @@ layer {
   }
 }
 layer {
+  name: "stem_conv2_3x3_scale"
   type: "Scale"
   bottom: "stem_conv2_3x3"
   top: "stem_conv2_3x3"
@@ -180,6 +182,7 @@ layer {
   }
 }
 layer {
+  name: "stem_conv3_3x3_scale"
   type: "Scale"
   bottom: "stem_conv3_3x3"
   top: "stem_conv3_3x3"
@@ -242,6 +245,7 @@ layer {
   }
 }
 layer {
+  name: "stem_inception1_conv_3x3_scale"
   type: "Scale"
   bottom: "stem_inception1_conv_3x3"
   top: "stem_inception1_conv_3x3"
@@ -300,6 +304,7 @@ layer {
   }
 }
 layer {
+  name: "stem_inception2_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "stem_inception2_conv1_1_1x1"
   top: "stem_inception2_conv1_1_1x1"
@@ -351,6 +356,7 @@ layer {
   }
 }
 layer {
+  name: "stem_inception2_conv1_2_3x3_scale"
   type: "Scale"
   bottom: "stem_inception2_conv1_2_3x3"
   top: "stem_inception2_conv1_2_3x3"
@@ -402,6 +408,7 @@ layer {
   }
 }
 layer {
+  name: "stem_inception2_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "stem_inception2_conv2_1_1x1"
   top: "stem_inception2_conv2_1_1x1"
@@ -455,6 +462,7 @@ layer {
   }
 }
 layer {
+  name: "stem_inception2_conv2_2_7x1_scale"
   type: "Scale"
   bottom: "stem_inception2_conv2_2_7x1"
   top: "stem_inception2_conv2_2_7x1"
@@ -508,6 +516,7 @@ layer {
   }
 }
 layer {
+  name: "stem_inception2_conv2_3_1x7_scale"
   type: "Scale"
   bottom: "stem_inception2_conv2_3_1x7"
   top: "stem_inception2_conv2_3_1x7"
@@ -559,6 +568,7 @@ layer {
   }
 }
 layer {
+  name: "stem_inception2_conv2_4_3x3_scale"
   type: "Scale"
   bottom: "stem_inception2_conv2_4_3x3"
   top: "stem_inception2_conv2_4_3x3"
@@ -617,6 +627,7 @@ layer {
   }
 }
 layer {
+  name: "stem_inception3_conv_3x3_scale"
   type: "Scale"
   bottom: "stem_inception3_conv_3x3"
   top: "stem_inception3_conv_3x3"
@@ -698,6 +709,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a1_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a1_conv1_1_1x1"
   top: "inception_a1_conv1_1_1x1"
@@ -749,6 +761,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a1_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a1_conv2_1_1x1"
   top: "inception_a1_conv2_1_1x1"
@@ -800,6 +813,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a1_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a1_conv3_1_1x1"
   top: "inception_a1_conv3_1_1x1"
@@ -851,6 +865,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a1_conv3_2_3x3_scale"
   type: "Scale"
   bottom: "inception_a1_conv3_2_3x3"
   top: "inception_a1_conv3_2_3x3"
@@ -902,6 +917,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a1_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a1_conv4_1_1x1"
   top: "inception_a1_conv4_1_1x1"
@@ -953,6 +969,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a1_conv4_2_3x3_scale"
   type: "Scale"
   bottom: "inception_a1_conv4_2_3x3"
   top: "inception_a1_conv4_2_3x3"
@@ -1004,6 +1021,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a1_conv4_3_3x3_scale"
   type: "Scale"
   bottom: "inception_a1_conv4_3_3x3"
   top: "inception_a1_conv4_3_3x3"
@@ -1076,6 +1094,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a2_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a2_conv1_1_1x1"
   top: "inception_a2_conv1_1_1x1"
@@ -1127,6 +1146,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a2_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a2_conv2_1_1x1"
   top: "inception_a2_conv2_1_1x1"
@@ -1178,6 +1198,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a2_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a2_conv3_1_1x1"
   top: "inception_a2_conv3_1_1x1"
@@ -1229,6 +1250,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a2_conv3_2_3x3_scale"
   type: "Scale"
   bottom: "inception_a2_conv3_2_3x3"
   top: "inception_a2_conv3_2_3x3"
@@ -1280,6 +1302,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a2_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a2_conv4_1_1x1"
   top: "inception_a2_conv4_1_1x1"
@@ -1331,6 +1354,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a2_conv4_2_3x3_scale"
   type: "Scale"
   bottom: "inception_a2_conv4_2_3x3"
   top: "inception_a2_conv4_2_3x3"
@@ -1382,6 +1406,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a2_conv4_3_3x3_scale"
   type: "Scale"
   bottom: "inception_a2_conv4_3_3x3"
   top: "inception_a2_conv4_3_3x3"
@@ -1454,6 +1479,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a3_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a3_conv1_1_1x1"
   top: "inception_a3_conv1_1_1x1"
@@ -1505,6 +1531,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a3_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a3_conv2_1_1x1"
   top: "inception_a3_conv2_1_1x1"
@@ -1556,6 +1583,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a3_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a3_conv3_1_1x1"
   top: "inception_a3_conv3_1_1x1"
@@ -1607,6 +1635,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a3_conv3_2_3x3_scale"
   type: "Scale"
   bottom: "inception_a3_conv3_2_3x3"
   top: "inception_a3_conv3_2_3x3"
@@ -1658,6 +1687,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a3_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a3_conv4_1_1x1"
   top: "inception_a3_conv4_1_1x1"
@@ -1709,6 +1739,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a3_conv4_2_3x3_scale"
   type: "Scale"
   bottom: "inception_a3_conv4_2_3x3"
   top: "inception_a3_conv4_2_3x3"
@@ -1760,6 +1791,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a3_conv4_3_3x3_scale"
   type: "Scale"
   bottom: "inception_a3_conv4_3_3x3"
   top: "inception_a3_conv4_3_3x3"
@@ -1832,6 +1864,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a4_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a4_conv1_1_1x1"
   top: "inception_a4_conv1_1_1x1"
@@ -1883,6 +1916,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a4_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a4_conv2_1_1x1"
   top: "inception_a4_conv2_1_1x1"
@@ -1934,6 +1968,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a4_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a4_conv3_1_1x1"
   top: "inception_a4_conv3_1_1x1"
@@ -1985,6 +2020,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a4_conv3_2_3x3_scale"
   type: "Scale"
   bottom: "inception_a4_conv3_2_3x3"
   top: "inception_a4_conv3_2_3x3"
@@ -2036,6 +2072,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a4_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_a4_conv4_1_1x1"
   top: "inception_a4_conv4_1_1x1"
@@ -2087,6 +2124,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a4_conv4_2_3x3_scale"
   type: "Scale"
   bottom: "inception_a4_conv4_2_3x3"
   top: "inception_a4_conv4_2_3x3"
@@ -2138,6 +2176,7 @@ layer {
   }
 }
 layer {
+  name: "inception_a4_conv4_3_3x3_scale"
   type: "Scale"
   bottom: "inception_a4_conv4_3_3x3"
   top: "inception_a4_conv4_3_3x3"
@@ -2209,6 +2248,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_a_conv2_1_3x3_scale"
   type: "Scale"
   bottom: "reduction_a_conv2_1_3x3"
   top: "reduction_a_conv2_1_3x3"
@@ -2260,6 +2300,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_a_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "reduction_a_conv3_1_1x1"
   top: "reduction_a_conv3_1_1x1"
@@ -2311,6 +2352,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_a_conv3_2_3x3_scale"
   type: "Scale"
   bottom: "reduction_a_conv3_2_3x3"
   top: "reduction_a_conv3_2_3x3"
@@ -2362,6 +2404,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_a_conv3_3_3x3_scale"
   type: "Scale"
   bottom: "reduction_a_conv3_3_3x3"
   top: "reduction_a_conv3_3_3x3"
@@ -2433,6 +2476,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b1_conv1_1_1x1"
   top: "inception_b1_conv1_1_1x1"
@@ -2484,6 +2528,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b1_conv2_1_1x1"
   top: "inception_b1_conv2_1_1x1"
@@ -2535,6 +2580,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b1_conv3_1_1x1"
   top: "inception_b1_conv3_1_1x1"
@@ -2588,6 +2634,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv3_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b1_conv3_2_1x7"
   top: "inception_b1_conv3_2_1x7"
@@ -2641,6 +2688,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv3_3_1x7_scale"
   type: "Scale"
   bottom: "inception_b1_conv3_3_1x7"
   top: "inception_b1_conv3_3_1x7"
@@ -2692,6 +2740,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b1_conv4_1_1x1"
   top: "inception_b1_conv4_1_1x1"
@@ -2745,6 +2794,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv4_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b1_conv4_2_1x7"
   top: "inception_b1_conv4_2_1x7"
@@ -2798,6 +2848,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv4_3_7x1_scale"
   type: "Scale"
   bottom: "inception_b1_conv4_3_7x1"
   top: "inception_b1_conv4_3_7x1"
@@ -2851,6 +2902,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv4_4_1x7_scale"
   type: "Scale"
   bottom: "inception_b1_conv4_4_1x7"
   top: "inception_b1_conv4_4_1x7"
@@ -2904,6 +2956,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b1_conv4_5_7x1_scale"
   type: "Scale"
   bottom: "inception_b1_conv4_5_7x1"
   top: "inception_b1_conv4_5_7x1"
@@ -2976,6 +3029,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b2_conv1_1_1x1"
   top: "inception_b2_conv1_1_1x1"
@@ -3027,6 +3081,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b2_conv2_1_1x1"
   top: "inception_b2_conv2_1_1x1"
@@ -3078,6 +3133,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b2_conv3_1_1x1"
   top: "inception_b2_conv3_1_1x1"
@@ -3131,6 +3187,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv3_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b2_conv3_2_1x7"
   top: "inception_b2_conv3_2_1x7"
@@ -3184,6 +3241,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv3_3_1x7_scale"
   type: "Scale"
   bottom: "inception_b2_conv3_3_1x7"
   top: "inception_b2_conv3_3_1x7"
@@ -3235,6 +3293,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b2_conv4_1_1x1"
   top: "inception_b2_conv4_1_1x1"
@@ -3288,6 +3347,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv4_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b2_conv4_2_1x7"
   top: "inception_b2_conv4_2_1x7"
@@ -3341,6 +3401,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv4_3_7x1_scale"
   type: "Scale"
   bottom: "inception_b2_conv4_3_7x1"
   top: "inception_b2_conv4_3_7x1"
@@ -3394,6 +3455,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv4_4_1x7_scale"
   type: "Scale"
   bottom: "inception_b2_conv4_4_1x7"
   top: "inception_b2_conv4_4_1x7"
@@ -3447,6 +3509,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b2_conv4_5_7x1_scale"
   type: "Scale"
   bottom: "inception_b2_conv4_5_7x1"
   top: "inception_b2_conv4_5_7x1"
@@ -3519,6 +3582,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b3_conv1_1_1x1"
   top: "inception_b3_conv1_1_1x1"
@@ -3570,6 +3634,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b3_conv2_1_1x1"
   top: "inception_b3_conv2_1_1x1"
@@ -3621,6 +3686,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b3_conv3_1_1x1"
   top: "inception_b3_conv3_1_1x1"
@@ -3674,6 +3740,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv3_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b3_conv3_2_1x7"
   top: "inception_b3_conv3_2_1x7"
@@ -3727,6 +3794,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv3_3_1x7_scale"
   type: "Scale"
   bottom: "inception_b3_conv3_3_1x7"
   top: "inception_b3_conv3_3_1x7"
@@ -3778,6 +3846,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b3_conv4_1_1x1"
   top: "inception_b3_conv4_1_1x1"
@@ -3831,6 +3900,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv4_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b3_conv4_2_1x7"
   top: "inception_b3_conv4_2_1x7"
@@ -3884,6 +3954,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv4_3_7x1_scale"
   type: "Scale"
   bottom: "inception_b3_conv4_3_7x1"
   top: "inception_b3_conv4_3_7x1"
@@ -3937,6 +4008,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv4_4_1x7_scale"
   type: "Scale"
   bottom: "inception_b3_conv4_4_1x7"
   top: "inception_b3_conv4_4_1x7"
@@ -3990,6 +4062,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b3_conv4_5_7x1_scale"
   type: "Scale"
   bottom: "inception_b3_conv4_5_7x1"
   top: "inception_b3_conv4_5_7x1"
@@ -4062,6 +4135,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b4_conv1_1_1x1"
   top: "inception_b4_conv1_1_1x1"
@@ -4113,6 +4187,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b4_conv2_1_1x1"
   top: "inception_b4_conv2_1_1x1"
@@ -4164,6 +4239,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b4_conv3_1_1x1"
   top: "inception_b4_conv3_1_1x1"
@@ -4217,6 +4293,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv3_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b4_conv3_2_1x7"
   top: "inception_b4_conv3_2_1x7"
@@ -4270,6 +4347,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv3_3_1x7_scale"
   type: "Scale"
   bottom: "inception_b4_conv3_3_1x7"
   top: "inception_b4_conv3_3_1x7"
@@ -4321,6 +4399,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b4_conv4_1_1x1"
   top: "inception_b4_conv4_1_1x1"
@@ -4374,6 +4453,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv4_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b4_conv4_2_1x7"
   top: "inception_b4_conv4_2_1x7"
@@ -4427,6 +4507,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv4_3_7x1_scale"
   type: "Scale"
   bottom: "inception_b4_conv4_3_7x1"
   top: "inception_b4_conv4_3_7x1"
@@ -4480,6 +4561,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv4_4_1x7_scale"
   type: "Scale"
   bottom: "inception_b4_conv4_4_1x7"
   top: "inception_b4_conv4_4_1x7"
@@ -4533,6 +4615,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b4_conv4_5_7x1_scale"
   type: "Scale"
   bottom: "inception_b4_conv4_5_7x1"
   top: "inception_b4_conv4_5_7x1"
@@ -4605,6 +4688,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b5_conv1_1_1x1"
   top: "inception_b5_conv1_1_1x1"
@@ -4656,6 +4740,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b5_conv2_1_1x1"
   top: "inception_b5_conv2_1_1x1"
@@ -4707,6 +4792,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b5_conv3_1_1x1"
   top: "inception_b5_conv3_1_1x1"
@@ -4760,6 +4846,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv3_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b5_conv3_2_1x7"
   top: "inception_b5_conv3_2_1x7"
@@ -4813,6 +4900,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv3_3_1x7_scale"
   type: "Scale"
   bottom: "inception_b5_conv3_3_1x7"
   top: "inception_b5_conv3_3_1x7"
@@ -4864,6 +4952,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b5_conv4_1_1x1"
   top: "inception_b5_conv4_1_1x1"
@@ -4917,6 +5006,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv4_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b5_conv4_2_1x7"
   top: "inception_b5_conv4_2_1x7"
@@ -4970,6 +5060,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv4_3_7x1_scale"
   type: "Scale"
   bottom: "inception_b5_conv4_3_7x1"
   top: "inception_b5_conv4_3_7x1"
@@ -5023,6 +5114,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv4_4_1x7_scale"
   type: "Scale"
   bottom: "inception_b5_conv4_4_1x7"
   top: "inception_b5_conv4_4_1x7"
@@ -5076,6 +5168,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b5_conv4_5_7x1_scale"
   type: "Scale"
   bottom: "inception_b5_conv4_5_7x1"
   top: "inception_b5_conv4_5_7x1"
@@ -5148,6 +5241,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b6_conv1_1_1x1"
   top: "inception_b6_conv1_1_1x1"
@@ -5199,6 +5293,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b6_conv2_1_1x1"
   top: "inception_b6_conv2_1_1x1"
@@ -5250,6 +5345,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b6_conv3_1_1x1"
   top: "inception_b6_conv3_1_1x1"
@@ -5303,6 +5399,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv3_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b6_conv3_2_1x7"
   top: "inception_b6_conv3_2_1x7"
@@ -5356,6 +5453,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv3_3_1x7_scale"
   type: "Scale"
   bottom: "inception_b6_conv3_3_1x7"
   top: "inception_b6_conv3_3_1x7"
@@ -5407,6 +5505,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b6_conv4_1_1x1"
   top: "inception_b6_conv4_1_1x1"
@@ -5460,6 +5559,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv4_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b6_conv4_2_1x7"
   top: "inception_b6_conv4_2_1x7"
@@ -5513,6 +5613,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv4_3_7x1_scale"
   type: "Scale"
   bottom: "inception_b6_conv4_3_7x1"
   top: "inception_b6_conv4_3_7x1"
@@ -5566,6 +5667,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv4_4_1x7_scale"
   type: "Scale"
   bottom: "inception_b6_conv4_4_1x7"
   top: "inception_b6_conv4_4_1x7"
@@ -5619,6 +5721,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b6_conv4_5_7x1_scale"
   type: "Scale"
   bottom: "inception_b6_conv4_5_7x1"
   top: "inception_b6_conv4_5_7x1"
@@ -5691,6 +5794,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv1_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b7_conv1_1_1x1"
   top: "inception_b7_conv1_1_1x1"
@@ -5742,6 +5846,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b7_conv2_1_1x1"
   top: "inception_b7_conv2_1_1x1"
@@ -5793,6 +5898,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b7_conv3_1_1x1"
   top: "inception_b7_conv3_1_1x1"
@@ -5846,6 +5952,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv3_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b7_conv3_2_1x7"
   top: "inception_b7_conv3_2_1x7"
@@ -5899,6 +6006,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv3_3_1x7_scale"
   type: "Scale"
   bottom: "inception_b7_conv3_3_1x7"
   top: "inception_b7_conv3_3_1x7"
@@ -5950,6 +6058,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv4_1_1x1_scale"
   type: "Scale"
   bottom: "inception_b7_conv4_1_1x1"
   top: "inception_b7_conv4_1_1x1"
@@ -6003,6 +6112,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv4_2_1x7_scale"
   type: "Scale"
   bottom: "inception_b7_conv4_2_1x7"
   top: "inception_b7_conv4_2_1x7"
@@ -6056,6 +6166,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv4_3_7x1_scale"
   type: "Scale"
   bottom: "inception_b7_conv4_3_7x1"
   top: "inception_b7_conv4_3_7x1"
@@ -6109,6 +6220,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv4_4_1x7_scale"
   type: "Scale"
   bottom: "inception_b7_conv4_4_1x7"
   top: "inception_b7_conv4_4_1x7"
@@ -6162,6 +6274,7 @@ layer {
   }
 }
 layer {
+  name: "inception_b7_conv4_5_7x1_scale"
   type: "Scale"
   bottom: "inception_b7_conv4_5_7x1"
   top: "inception_b7_conv4_5_7x1"
@@ -6233,6 +6346,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_b_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "reduction_b_conv2_1_1x1"
   top: "reduction_b_conv2_1_1x1"
@@ -6284,6 +6398,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_b_conv2_2_3x3_scale"
   type: "Scale"
   bottom: "reduction_b_conv2_2_3x3"
   top: "reduction_b_conv2_2_3x3"
@@ -6335,6 +6450,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_b_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "reduction_b_conv3_1_1x1"
   top: "reduction_b_conv3_1_1x1"
@@ -6388,6 +6504,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_b_conv3_2_1x7_scale"
   type: "Scale"
   bottom: "reduction_b_conv3_2_1x7"
   top: "reduction_b_conv3_2_1x7"
@@ -6441,6 +6558,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_b_conv3_3_7x1_scale"
   type: "Scale"
   bottom: "reduction_b_conv3_3_7x1"
   top: "reduction_b_conv3_3_7x1"
@@ -6492,6 +6610,7 @@ layer {
   }
 }
 layer {
+  name: "reduction_b_conv3_4_3x3_scale"
   type: "Scale"
   bottom: "reduction_b_conv3_4_3x3"
   top: "reduction_b_conv3_4_3x3"
@@ -6563,6 +6682,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv1_2_1x1_scale"
   type: "Scale"
   bottom: "inception_c1_conv1_2_1x1"
   top: "inception_c1_conv1_2_1x1"
@@ -6614,6 +6734,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_c1_conv2_1_1x1"
   top: "inception_c1_conv2_1_1x1"
@@ -6665,6 +6786,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_c1_conv3_1_1x1"
   top: "inception_c1_conv3_1_1x1"
@@ -6718,6 +6840,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv3_2_1x3_scale"
   type: "Scale"
   bottom: "inception_c1_conv3_2_1x3"
   top: "inception_c1_conv3_2_1x3"
@@ -6771,6 +6894,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv4_2_3x1_scale"
   type: "Scale"
   bottom: "inception_c1_conv4_2_3x1"
   top: "inception_c1_conv4_2_3x1"
@@ -6822,6 +6946,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv5_1_1x1_scale"
   type: "Scale"
   bottom: "inception_c1_conv5_1_1x1"
   top: "inception_c1_conv5_1_1x1"
@@ -6875,6 +7000,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv5_2_1x3_scale"
   type: "Scale"
   bottom: "inception_c1_conv5_2_1x3"
   top: "inception_c1_conv5_2_1x3"
@@ -6928,6 +7054,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv5_3_3x1_scale"
   type: "Scale"
   bottom: "inception_c1_conv5_3_3x1"
   top: "inception_c1_conv5_3_3x1"
@@ -6981,6 +7108,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv5_4_3x1_scale"
   type: "Scale"
   bottom: "inception_c1_conv5_4_3x1"
   top: "inception_c1_conv5_4_3x1"
@@ -7034,6 +7162,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c1_conv6_4_1x3_scale"
   type: "Scale"
   bottom: "inception_c1_conv6_4_1x3"
   top: "inception_c1_conv6_4_1x3"
@@ -7108,6 +7237,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv1_2_1x1_scale"
   type: "Scale"
   bottom: "inception_c2_conv1_2_1x1"
   top: "inception_c2_conv1_2_1x1"
@@ -7159,6 +7289,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_c2_conv2_1_1x1"
   top: "inception_c2_conv2_1_1x1"
@@ -7210,6 +7341,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_c2_conv3_1_1x1"
   top: "inception_c2_conv3_1_1x1"
@@ -7263,6 +7395,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv3_2_1x3_scale"
   type: "Scale"
   bottom: "inception_c2_conv3_2_1x3"
   top: "inception_c2_conv3_2_1x3"
@@ -7316,6 +7449,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv4_2_3x1_scale"
   type: "Scale"
   bottom: "inception_c2_conv4_2_3x1"
   top: "inception_c2_conv4_2_3x1"
@@ -7367,6 +7501,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv5_1_1x1_scale"
   type: "Scale"
   bottom: "inception_c2_conv5_1_1x1"
   top: "inception_c2_conv5_1_1x1"
@@ -7420,6 +7555,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv5_2_1x3_scale"
   type: "Scale"
   bottom: "inception_c2_conv5_2_1x3"
   top: "inception_c2_conv5_2_1x3"
@@ -7473,6 +7609,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv5_3_3x1_scale"
   type: "Scale"
   bottom: "inception_c2_conv5_3_3x1"
   top: "inception_c2_conv5_3_3x1"
@@ -7526,6 +7663,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv5_4_3x1_scale"
   type: "Scale"
   bottom: "inception_c2_conv5_4_3x1"
   top: "inception_c2_conv5_4_3x1"
@@ -7579,6 +7717,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c2_conv6_4_1x3_scale"
   type: "Scale"
   bottom: "inception_c2_conv6_4_1x3"
   top: "inception_c2_conv6_4_1x3"
@@ -7653,6 +7792,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv1_2_1x1_scale"
   type: "Scale"
   bottom: "inception_c3_conv1_2_1x1"
   top: "inception_c3_conv1_2_1x1"
@@ -7704,6 +7844,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv2_1_1x1_scale"
   type: "Scale"
   bottom: "inception_c3_conv2_1_1x1"
   top: "inception_c3_conv2_1_1x1"
@@ -7755,6 +7896,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv3_1_1x1_scale"
   type: "Scale"
   bottom: "inception_c3_conv3_1_1x1"
   top: "inception_c3_conv3_1_1x1"
@@ -7808,6 +7950,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv3_2_1x3_scale"
   type: "Scale"
   bottom: "inception_c3_conv3_2_1x3"
   top: "inception_c3_conv3_2_1x3"
@@ -7861,6 +8004,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv4_2_3x1_scale"
   type: "Scale"
   bottom: "inception_c3_conv4_2_3x1"
   top: "inception_c3_conv4_2_3x1"
@@ -7912,6 +8056,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv5_1_1x1_scale"
   type: "Scale"
   bottom: "inception_c3_conv5_1_1x1"
   top: "inception_c3_conv5_1_1x1"
@@ -7965,6 +8110,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv5_2_1x3_scale"
   type: "Scale"
   bottom: "inception_c3_conv5_2_1x3"
   top: "inception_c3_conv5_2_1x3"
@@ -8018,6 +8164,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv5_3_3x1_scale"
   type: "Scale"
   bottom: "inception_c3_conv5_3_3x1"
   top: "inception_c3_conv5_3_3x1"
@@ -8071,6 +8218,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv5_4_3x1_scale"
   type: "Scale"
   bottom: "inception_c3_conv5_4_3x1"
   top: "inception_c3_conv5_4_3x1"
@@ -8124,6 +8272,7 @@ layer {
   }
 }
 layer {
+  name: "inception_c3_conv6_4_1x3_scale"
   type: "Scale"
   bottom: "inception_c3_conv6_4_1x3"
   top: "inception_c3_conv6_4_1x3"
