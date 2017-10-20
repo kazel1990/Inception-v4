@@ -186,7 +186,6 @@ void concat(std::string name, std::vector<std::string> bot, std::string top)
 void norm(std::string str)
 {
     batch_norm(str);
-    scale(str);
     relu(str);
 }
 
