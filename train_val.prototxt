@@ -35,7 +35,7 @@ layer {
     mean_value: 123
   }
   data_param {
-    source: "examples/imagenet/ilsvrc12_val_lmdb"
+    source: "examples/imagenet/ilsvrc12_test_lmdb"
     batch_size: 32
     backend: LMDB
   }

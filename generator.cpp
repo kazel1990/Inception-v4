@@ -3,7 +3,11 @@
 #include<vector>
 
 constexpr int batch_size = 32;
-const char dropout_ratio[4] = "0.2";
+constexpr int crop_size = 299;
+const char train_path[100] = "examples/imagenet/ilsvrc12_train_lmdb";
+const char test_path[100] = "examples/imagenet/ilsvrc12_test_lmdb";
+const char conv_xavier_std[9] = "0.01";
+const char dropout_ratio[9] = "0.2";
 
 int indent;
 char buf[1<<8];
@@ -40,7 +44,6 @@ void in_out(std::string bot, std::string top)
     print(buf);
 }
 
-//TODO: handle hyperparams outside
 void convolution(std::string name, std::string bot, std::string top,
         int output, int pad_h, int pad_w, int kernel_h, int kernel_w,
         int stride)
@@ -91,7 +94,8 @@ void convolution(std::string name, std::string bot, std::string top,
 
     print("weight_filler {");
     print("type: \"xavier\"");
-    print("std: 0.01");
+    sprintf(buf,"std: %s",conv_xavier_std);
+    print(buf);
     print("}");
 
     print("bias_filler {");
@@ -208,15 +212,15 @@ void create_data()
         print("transform_param {");
         sprintf(buf,"mirror: %s",i?"false":"true");
         print(buf);
-        print("crop_size: 299");
+        sprintf(buf,"crop_size: %d",crop_size);
+        print(buf);
         print("mean_value: 104");
         print("mean_value: 117");
         print("mean_value: 123");
         print("}");
 
         print("data_param {");
-        sprintf(buf,"source: \"examples/imagenet/ilsvrc12_%s_lmdb\"",
-                i?"val":"train");
+        sprintf(buf,"source: \"%s\"",i?test_path:train_path);
         print(buf);
         sprintf(buf,"batch_size: %d",batch_size);
         print(buf);
